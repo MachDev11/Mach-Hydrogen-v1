@@ -7,7 +7,7 @@ import type {
 } from 'storefrontapi.generated';
 import {Aside} from '~/components/Aside';
 import {Footer} from '~/components/Footer';
-import {Header, HeaderMenu} from '~/components/Header';
+import Header from '~/components/Header';
 import {CartMain} from '~/components/CartMain';
 import {
   SEARCH_ENDPOINT,
@@ -38,12 +38,7 @@ export function PageLayout({
       <SearchAside />
       <MobileMenuAside header={header} publicStoreDomain={publicStoreDomain} />
       {header && (
-        <Header
-          header={header}
-          cart={cart}
-          isLoggedIn={isLoggedIn}
-          publicStoreDomain={publicStoreDomain}
-        />
+        <Header />
       )}
       <main>{children}</main>
       <Footer
@@ -151,6 +146,7 @@ function SearchAside() {
   );
 }
 
+// Removing duplicate function declaration
 function MobileMenuAside({
   header,
   publicStoreDomain,
@@ -162,13 +158,35 @@ function MobileMenuAside({
     header.menu &&
     header.shop.primaryDomain?.url && (
       <Aside type="mobile" heading="MENU">
-        <HeaderMenu
-          menu={header.menu}
-          viewport="mobile"
-          primaryDomainUrl={header.shop.primaryDomain.url}
-          publicStoreDomain={publicStoreDomain}
-        />
+        <nav className="flex flex-col space-y-4">
+          <Link to="/shop" className="hover:text-gray-600 transition">Shop</Link>
+          <Link to="/collections" className="hover:text-gray-600 transition">Collections</Link>
+          <Link to="/about" className="hover:text-gray-600 transition">About</Link>
+          <Link to="/blog" className="hover:text-gray-600 transition">Blog</Link>
+          <Link to="/contact" className="hover:text-gray-600 transition">Contact</Link>
+        </nav>
       </Aside>
     )
+  );
+}
+
+// Renamed to avoid duplicate function declaration
+function MobileMenuAsideSecondary({
+  header,
+  publicStoreDomain,
+}: {
+  header: PageLayoutProps['header'];
+  publicStoreDomain: PageLayoutProps['publicStoreDomain'];
+}) {
+  return (
+    <Aside type="mobile" heading="MENU">
+      <nav className="flex flex-col space-y-4">
+        <Link to="/shop" className="hover:text-gray-600 transition">Shop</Link>
+        <Link to="/collections" className="hover:text-gray-600 transition">Collections</Link>
+        <Link to="/about" className="hover:text-gray-600 transition">About</Link>
+        <Link to="/blog" className="hover:text-gray-600 transition">Blog</Link>
+        <Link to="/contact" className="hover:text-gray-600 transition">Contact</Link>
+      </nav>
+    </Aside>
   );
 }
