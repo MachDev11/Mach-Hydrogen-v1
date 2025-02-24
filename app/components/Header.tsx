@@ -14,7 +14,7 @@ export default function Header() {
         </button>
         
         {/* Logo */}
-        <div className="flex justify-center flex-1">
+        <div className="flex flex-1">
           <Link to="/" className="text-xl font-bold">
             <img src="/logo.png" alt="Mach Apparel" className="h-10" />
           </Link>

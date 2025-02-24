@@ -146,7 +146,6 @@ function SearchAside() {
   );
 }
 
-// Removing duplicate function declaration
 function MobileMenuAside({
   header,
   publicStoreDomain,
@@ -158,7 +157,7 @@ function MobileMenuAside({
     header.menu &&
     header.shop.primaryDomain?.url && (
       <Aside type="mobile" heading="MENU">
-        <nav className="flex flex-col space-y-4">
+        <nav className="flex flex-col items-center space-y-4">
           <Link to="/shop" className="hover:text-gray-600 transition">Shop</Link>
           <Link to="/collections" className="hover:text-gray-600 transition">Collections</Link>
           <Link to="/about" className="hover:text-gray-600 transition">About</Link>
@@ -170,23 +169,3 @@ function MobileMenuAside({
   );
 }
 
-// Renamed to avoid duplicate function declaration
-function MobileMenuAsideSecondary({
-  header,
-  publicStoreDomain,
-}: {
-  header: PageLayoutProps['header'];
-  publicStoreDomain: PageLayoutProps['publicStoreDomain'];
-}) {
-  return (
-    <Aside type="mobile" heading="MENU">
-      <nav className="flex flex-col space-y-4">
-        <Link to="/shop" className="hover:text-gray-600 transition">Shop</Link>
-        <Link to="/collections" className="hover:text-gray-600 transition">Collections</Link>
-        <Link to="/about" className="hover:text-gray-600 transition">About</Link>
-        <Link to="/blog" className="hover:text-gray-600 transition">Blog</Link>
-        <Link to="/contact" className="hover:text-gray-600 transition">Contact</Link>
-      </nav>
-    </Aside>
-  );
-}
